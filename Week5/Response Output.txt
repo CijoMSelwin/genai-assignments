@@ -1,0 +1,56 @@
+﻿List of issues:
+
+
+1. TC_BT_001: Preconditions are incomplete, it should specify the daily limit amount.
+2. TC_BT_001: Expected Result is too vague, it should specify the exact confirmation message displayed.
+3. TC_BT_002: Steps 2 and 3 are swapped, it should be "Enter amount exceeding daily limit" before "Enter beneficiary details".
+4. TC_BT_003: Preconditions are incomplete, it should specify the type of invalid beneficiary details.
+5. TC_BT_004: Steps 4 and 5 are swapped, it should be "Submit transaction" before "Authenticate with OTP".
+6. TC_BT_005: Preconditions are incomplete, it should specify the amount that exceeds the daily limit.
+
+
+Suggestions for improvement:
+
+
+1. Use a more detailed and specific format for preconditions and expected results.
+2. Use a consistent naming convention for test cases.
+3. Use a more structured format for steps, including the action and expected result.
+4. Consider adding a data-driven approach to test cases to reduce duplication.
+5. Use a more descriptive title for each test case.
+
+
+Improved test case:
+TC_BT_001 Title: Verify successful fund transfer within daily limit Preconditions: User is logged in with an active account, has sufficient balance ($1000), and the daily limit is $5000 Steps:
+1. Navigate to Fund Transfer
+2. Enter beneficiary details
+3. Enter amount within daily limit ($200)
+4. Submit transaction Expected Result: Transaction completes successfully and confirmation message "Transaction completed successfully. Amount: $200" is displayed.
+
+
+TC_BT_002 Title: Fund transfer with insufficient balance Preconditions: User is logged in with an active account, has insufficient balance ($50), and the daily limit is $5000 Steps:
+1. Navigate to Fund Transfer
+2. Enter beneficiary details
+3. Enter amount exceeding daily limit ($2000)
+4. Submit transaction Expected Result: Error message "Insufficient balance" is displayed.
+
+
+TC_BT_003 Title: Fund transfer with invalid beneficiary details Preconditions: User is logged in with an active account, and the beneficiary account number is invalid Steps:
+1. Navigate to Fund Transfer
+2. Enter invalid beneficiary details (account number 1234567890)
+3. Enter amount within daily limit ($200)
+4. Submit transaction Expected Result: Error message "Invalid beneficiary details" is displayed.
+
+
+TC_BT_004 Title: Fund transfer with OTP authentication Preconditions: User is logged in with an active account, has OTP enabled, and the OTP is 123456 Steps:
+1. Navigate to Fund Transfer
+2. Enter beneficiary details
+3. Enter amount within daily limit ($200)
+4. Authenticate with OTP (123456)
+5. Submit transaction Expected Result: Transaction completes successfully and confirmation message "Transaction completed successfully. Amount: $200" is displayed.
+
+
+TC_BT_005 Title: Fund transfer with daily limit exceeded Preconditions: User is logged in with an active account, has exceeded daily limit ($6000), and the daily limit is $5000 Steps:
+1. Navigate to Fund Transfer
+2. Enter beneficiary details
+3. Enter amount exceeding daily limit ($2000)
+4. Submit transaction Expected Result: Error message "Daily limit exceeded" is displayed.
